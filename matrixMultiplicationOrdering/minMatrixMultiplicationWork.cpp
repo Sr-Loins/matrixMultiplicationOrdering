@@ -15,13 +15,36 @@
 using namespace std;
 
 int findMinCost(vector<int>& m, int size)
-//function finds the minimum cost of matrix multiplications
+//function finds the minimum cost of matrix multiplications by traversing the 
 {
-	const int n = 10;
-	int bigM[n][n]; //represents the 2d nxn table
+	int min = 0; // setting it to 0 for now to make sure it builds, need to change
+	int n = size - 1; //n to match up with the algorithm shown in lecture
+	int j = 0; //to track columns
+	int k = 0; //track index of m
+	//int bigM[n][n]; //represents the 2d nxn table
+	std::vector< std::vector<int> > bigM; //represents the 2d nxn table
+	
+	for (int md = 0; md <= n; md++) //declaired md for "main diagonal"
+	{
+		bigM[md][md] = 0; //set the main diagonal to all 0
+	}//end i for
+	for (int d = 1; d <= n - 1; d++) //d tracks current diagonal
+	{
+		for (int i = 0; i <= n - d; i++) //i tracks teh current row
+		{
+			j = i + d; //column on the diagonal
+			for (k = i; k < j; k++) //calculate the minimum matrix cost for matrix at bigM[i][j]
+			{
+				min = bigM[i][k] + bigM[k + 1][j] + m[i - 1] * m[k] * m[j];
+				if (min < bigM[i][j])//assign the min operation cost to bigM[i][j]
+				{
+					bigM[i][j] = min;
+				}//end if
+			}//end k for
+		}//end i for
+	}//end d for 
 
-
-
+	return bigM[0][n];
 }
 
 int main()
