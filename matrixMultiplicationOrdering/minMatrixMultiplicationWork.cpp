@@ -14,7 +14,7 @@
 #include <vector>
 using namespace std;
 
-int findMinCost(const int m[], int size)
+int findMinCost(vector<int>& m, int size)
 //function finds the minimum cost of matrix multiplications
 {
 	const int n = 10;
@@ -30,7 +30,9 @@ int main()
 
 
 {
-	int m[11]; //declare an array of size 11. 11 is the max size of the array
+	std::vector<int> m; //declare a vector
+	m.reserve(10); //make room for 10 elements
+	//int m[11]; //declare an array of size 11. 11 is the max size of the array
 	int n; //this will be the array elements from the input file
 	int i = 0; // array index varriable
 
@@ -45,12 +47,14 @@ int main()
 
 	while (in_stream >> n) //fill in the array
 	{
-		m[i++] = n;
+		m.push_back(int(n));
+		//i++;
+		//m[i++] = n;
 	}
 
 	//read the file – see below
 	in_stream.close();
-	findMinCost(m, i-1);
+	findMinCost(m, m.size()); //pass vector and size to findMinCost
 
 	/* will need this to output the results
 	ofstream out_stream;
