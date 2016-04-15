@@ -11,6 +11,7 @@
 ******************************************************************/
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 int findMinCost(const int m[], int size)
