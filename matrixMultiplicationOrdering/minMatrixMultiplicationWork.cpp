@@ -58,7 +58,7 @@ int main()
 	//int m[11]; //declare an array of size 11. 11 is the max size of the array
 	int n; //this will be the array elements from the input file
 	int i = 0; // array index varriable
-
+	int min = 0;
 	//access datafile and read in elements, eliments in datafile are on seperate lines
 	ifstream in_stream;
 	in_stream.open("matrix.txt");
@@ -77,18 +77,18 @@ int main()
 
 	//read the file – see below
 	in_stream.close();
-	findMinCost(m, m.size()); //pass vector and size to findMinCost
+	min = findMinCost(m, m.size()); //pass vector and size to findMinCost
 
-	/* will need this to output the results
+	
 	ofstream out_stream;
-	out_stream.open("peak.txt", ios::app);
+	out_stream.open("matrix.txt", ios::app);
 	if (out_stream.fail())
 	{
 		cout << "Error: unable to find output file"; //error message
 		exit(1); //exit the program
 	}//end if
-	out_stream << "the peak value is, " << p;
-	*/
+	out_stream << "the peak value is, " << min;
+
 	return 0;
 
 }
