@@ -14,12 +14,12 @@
 #include <vector>
 using namespace std;
 
-int findMinCost(const int m[], int size)
+int findMinCost(const int m[], int n)
 //function finds the minimum cost of matrix multiplications by traversing the 
 {
 	//int size = m.size();
 	int min; // setting it to 0 for now to make sure it builds, need to change
-	int n = size - 1; //n to match up with the algorithm shown in lecture
+	//int n = size; //n to match up with the algorithm shown in lecture
 	int j = 0; //to track columns
 	int k = 0; //track index of m
 	//int bigM[n][n]; //represents the 2d nxn table
@@ -31,13 +31,13 @@ int findMinCost(const int m[], int size)
 		bigM[i][0] = 0;
 		bigM[0][i] = 0;
 	}
-	for (int md = 0; md <= n; md++) //declaired md for "main diagonal"
+	for (int md = 0; md < n; md++) //declaired md for "main diagonal"
 	{
 		bigM[md][md] = 0; //set the main diagonal to all 0
 	}//end i for
-	for (int d = 1; d <= n - 1; d++) //d tracks current diagonal
+	for (int d = 1; d < n - 1; d++) //d tracks current diagonal
 	{
-		for (int i = 1; i <= n - d; i++) //i tracks teh current row
+		for (int i = 1; i < n - d; i++) //i tracks teh current row
 		{
 			j = i + d; //column on the diagonal
 			bigM[i][j] = 10000000; //innitialize the position to some big base value so I don't have a mem addr here
@@ -57,7 +57,7 @@ int findMinCost(const int m[], int size)
 			}//end k for
 		}//end i for
 	}//end d for 
-	min = bigM[1][n];
+	min = bigM[1][n - 1];
 
 	return min;
 }
@@ -95,8 +95,8 @@ int main()
 	//cout << m.size();//debugging just to see what the size of the vector is
 	//read the file – see below
 	in_stream.close();
-	size = i;
-	min = findMinCost(m, size); //pass vector and size to findMinCost
+	//size = i;
+	min = findMinCost(m, i); //pass vector and size to findMinCost
 
 	
 	ofstream out_stream;
