@@ -57,7 +57,7 @@ int findMinCost(const int m[], int size)
 			}//end k for
 		}//end i for
 	}//end d for 
-	min = bigM[0][n];
+	min = bigM[1][n];
 
 	return min;
 }
@@ -95,7 +95,7 @@ int main()
 	//cout << m.size();//debugging just to see what the size of the vector is
 	//read the file – see below
 	in_stream.close();
-	size = i - 1;
+	size = i;
 	min = findMinCost(m, size); //pass vector and size to findMinCost
 
 	
