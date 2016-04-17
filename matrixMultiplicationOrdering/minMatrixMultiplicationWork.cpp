@@ -26,7 +26,11 @@ int findMinCost(const int m[], int size)
 	//std::vector< std::vector<int> > bigM; //represents the 2d nxn table
 	//bigM.resize(size, vector<int>(size));
 	int bigM[10][10]; //represents the 2d nxn table
-	
+	for (int i = 0; i <= n; i++)//set the first row and first column to 0
+	{
+		bigM[i][0] = 0;
+		bigM[0][i] = 0;
+	}
 	for (int md = 0; md <= n; md++) //declaired md for "main diagonal"
 	{
 		bigM[md][md] = 0; //set the main diagonal to all 0
